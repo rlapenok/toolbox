@@ -1,15 +1,25 @@
 package microservice
 
-import "context"
+import (
+	"context"
 
-// Gracefull - интерфейс для запуска и остановки сервиса
+	"go.uber.org/zap"
+)
+
+// Gracefull - interface for start and stop service
 type Gracefull interface {
-	// Name - имя сервиса
+	// Name - name of the service
 	Name() string
-	// Address - адрес сервиса
+	// Address - address of the service
 	Address() string
-	// Start - запуск сервиса
+	// Start - start the service
 	Start() error
-	// Stop - остановка сервиса
+	// Stop - stop the service
 	Stop(ctx context.Context) error
+
+	// Logger - logger of the service
+	Logger() *zap.Logger
+
+	// WithLogger - set logger
+	WithLogger(logger *zap.Logger)
 }
