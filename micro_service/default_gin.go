@@ -1,17 +1,6 @@
 package microservice
 
-import (
-	"context"
-	"math/rand"
-	"time"
-
-	"github.com/gin-gonic/gin"
-	"github.com/rlapenok/toolbox/errors"
-	"github.com/rlapenok/toolbox/transport/http"
-	middlewareHTTP "github.com/rlapenok/toolbox/transport/middleware/http"
-	"go.uber.org/zap"
-)
-
+/*
 type httpConfig struct {
 	environment string
 	host        string
@@ -92,3 +81,4 @@ func readyzHandler(c *gin.Context) {
 		})
 	}
 }
+*/

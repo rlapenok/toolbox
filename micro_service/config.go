@@ -1,7 +1,6 @@
 package microservice
 
-// Config - интерфейс для конфигурации микросервиса
+// Config - interface for microservice config
 type Config interface {
 	GetName() string
-	EnableDefaultGinServer() bool
 }

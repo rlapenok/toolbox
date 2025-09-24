@@ -62,7 +62,7 @@ func (s *GinServer) Name() string {
 
 // Address - возвращает адрес сервиса
 func (s *GinServer) Address() string {
-	return fmt.Sprintf("%s:%d", *s.address, s.port)
+	return *s.address
 }
 
 // Start - запуск сервера

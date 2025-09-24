@@ -15,25 +15,21 @@ import (
 // MicroService - composite structure for microservice
 // contains HTTP server, GRPC server, database connection, logger, configuration, etc.
 type MicroService struct {
+	name       *string
 	gracefulls []Gracefull
 	logger     *zap.Logger
 }
 
 // NewMicroService - create new microservice from config
 func NewMicroService(config Config) *MicroService {
-
-	// create default logger
-	loggerConfig := defaultLogger()
-	logger, _ := logger.New(loggerConfig)
+	logger := defaultLogger()
 
 	gracefulls := []Gracefull{}
 
-	if config.EnableDefaultGinServer() {
-		ginServer := defaultGinServer(logger)
-		gracefulls = append(gracefulls, ginServer)
-	}
+	name := config.GetName()
 
 	return &MicroService{
+		name:       &name,
 		gracefulls: gracefulls,
 		logger:     logger,
 	}

@@ -3,7 +3,6 @@ package errors
 type Reason string
 
 const (
-	ReasonReadz           Reason = "readz_error"
 	ReasonInternal        Reason = "internal_server_error"
 	ReasonNotFound        Reason = "not_found"
 	ReasonBadRequest      Reason = "bad_request"

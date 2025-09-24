@@ -2,24 +2,24 @@ package microservice
 
 import (
 	"github.com/rlapenok/toolbox/logger"
+	"go.uber.org/zap"
 )
 
-func defaultLogger() logger.Config {
-	config := logger.Config{
-		ConsoleEnabled: true,
-		ConsoleFormat:  logger.FormatLogfmt,
-		ConsoleMode:    logger.ConsoleSplit,
-		ConsoleLevel:   "debug",
+type defaultLogerConfig struct{}
 
-		FileEnabled:    true,
-		FilePath:       "logs/app.log",
-		FileFormat:     logger.FormatLogfmt,
-		FileLevel:      "debug",
-		FileMaxSizeMB:  100,
-		FileMaxBackups: 10,
-		FileMaxAgeDays: 30,
-		FileCompress:   true,
-	}
+func (c *defaultLogerConfig) GetFormat() logger.LogFormat {
+	return logger.FormatLogfmt
+}
 
-	return config
+func (c *defaultLogerConfig) GetLevel() string {
+	return "debug"
+}
+
+func (c *defaultLogerConfig) GetMeta() map[string]any {
+	return nil
+}
+
+func defaultLogger() *zap.Logger {
+	logger, _ := logger.New(&defaultLogerConfig{})
+	return logger
 }

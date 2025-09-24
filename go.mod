@@ -9,7 +9,6 @@ require (
 	github.com/jackc/pgx/v5 v5.7.5
 	go.uber.org/zap v1.27.0
 	google.golang.org/grpc v1.75.0
-	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 )
 
 require (

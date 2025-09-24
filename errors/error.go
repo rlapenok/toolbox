@@ -23,7 +23,7 @@ type Error struct {
 
 // implement the error interface
 func (e *Error) Error() string {
-	return fmt.Sprintf("code: %d, message: %s, details: %v", e.errCode, e.message, e.details)
+	return fmt.Sprintf("code: %d, message: %s, reason: %s, details: %v", e.errCode, e.message, e.reason, e.details)
 }
 
 // New creates a new error with the given code and message

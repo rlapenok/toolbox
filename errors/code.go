@@ -9,6 +9,10 @@ type Code int
 
 // Error codes
 const (
+	//Codes for other
+	InvalidParameter Code = 1
+
+	//Codes for web
 	BadRequest      Code = 400 // http.BadRequest / grpc.InvalidArgument
 	Unauthorized    Code = 401 // http.Unauthorized / grpc.Unauthenticated
 	Forbidden       Code = 403 // http.Forbidden / grpc.PermissionDenied
