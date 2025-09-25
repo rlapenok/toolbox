@@ -78,8 +78,9 @@ func (s *GinServer) Stop(ctx context.Context) error {
 }
 
 // WithLogger - set logger to the service
-func (s *GinServer) WithLogger(logger *zap.Logger) {
+func (s *GinServer) WithLogger(logger *zap.Logger) *GinServer {
 	s.logger = logger
+	return s
 }
 
 // Logger - return logger of the service
