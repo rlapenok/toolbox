@@ -12,16 +12,14 @@ func PanicMiddleware(logger *zap.Logger) gin.HandlerFunc {
 
 		defer func() {
 			if r := recover(); r != nil {
-				details := errors.NewDetails()
-				details.WithLocaleMessage("en-EN", "internal server error")
-
 				err := errors.New(errors.Internal, "internal server error").
-					WithDetails(details)
+					WithDetails(r)
 
 				httpStatus := err.ToHTTPStatus()
 				code := err.Code()
 				message := err.Message()
 				reason := err.Reason()
+				details := err.Details()
 
 				logger.Error("PANIC", zap.Any("panic", r))
 
