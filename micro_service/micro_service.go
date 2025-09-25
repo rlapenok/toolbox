@@ -13,7 +13,7 @@ import (
 )
 
 // MicroService - composite structure for microservice
-// contains Gracefulls, logger
+// contains HTTP server, GRPC server, database connection, logger, configuration, etc.
 type MicroService struct {
 	name       *string
 	gracefulls []Gracefull
@@ -56,7 +56,13 @@ func (s *MicroService) WithLogger(config logger.Config) *MicroService {
 }
 
 // WithGracefull - return new microservice with new gracefull
-func (s *MicroService) WithGracefull(gracefull Gracefull) *MicroService {
+func (s *MicroService) WithGracefull(gracefull Gracefull, logger *zap.Logger) *MicroService {
+	if logger == nil {
+		logger = s.logger
+	}
+
+	gracefull.WithLogger(logger)
+
 	return &MicroService{
 		gracefulls: append(s.gracefulls, gracefull),
 	}
