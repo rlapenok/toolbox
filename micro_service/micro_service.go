@@ -56,13 +56,7 @@ func (s *MicroService) WithLogger(config logger.Config) *MicroService {
 }
 
 // WithGracefull - return new microservice with new gracefull
-func (s *MicroService) WithGracefull(gracefull Gracefull, logger *zap.Logger) *MicroService {
-	if logger == nil {
-		logger = s.logger
-	}
-
-	gracefull.WithLogger(logger)
-
+func (s *MicroService) WithGracefull(gracefull Gracefull) *MicroService {
 	return &MicroService{
 		gracefulls: append(s.gracefulls, gracefull),
 	}

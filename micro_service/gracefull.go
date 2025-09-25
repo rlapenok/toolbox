@@ -21,5 +21,5 @@ type Gracefull interface {
 	Logger() *zap.Logger
 
 	// WithLogger - set logger
-	WithLogger(logger *zap.Logger) Gracefull
+	WithLogger(logger *zap.Logger)
 }
